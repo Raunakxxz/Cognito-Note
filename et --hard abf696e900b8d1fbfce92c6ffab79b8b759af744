@@ -1,0 +1,75 @@
+[33mcommit abf696e900b8d1fbfce92c6ffab79b8b759af744[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 07:34:43 2025 +0000
+
+    FIX
+
+[33mcommit 3d96c33ab05923713201fe6adcbcab9f681279e6[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 07:31:42 2025 +0000
+
+    WHY LOGIN THERE IS ERROR CALLED AN UNEXPECTED ERROR OCCURED TRY AGAIN FI
+
+[33mcommit c56e16300d58037d83a14b4a36277dc189868034[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 07:26:04 2025 +0000
+
+    Try fixing this error: `Build Error: Export useNotes doesn't exist in ta
+
+[33mcommit aa259a7a8eb4f5daa2cdd13b6ad84bc75af9e28c[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 07:17:11 2025 +0000
+
+    ## Error Type
+    Build Error
+    
+    ## Error Message
+    Export useNotes doesn't exis
+
+[33mcommit 273bf0d3359cdb7534454e9ad33cff98547814e8[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 06:57:22 2025 +0000
+
+    when i click add tag i cant create a tag , and the tag should start with
+
+[33mcommit 3956c68597b8854d78e5cc80cd603aadd283a709[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 06:47:56 2025 +0000
+
+    The app has multiple critical bugs and broken features. Explain each pro
+
+[33mcommit a968ca0b4529ec6eefadecf46f5beb3bc4a79e0f[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 06:42:22 2025 +0000
+
+    Try fixing this error: `Console Error: A param property was accessed dir
+
+[33mcommit f765ddd828f74ecfbaf697f75c46a686b7233ca4[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 06:38:06 2025 +0000
+
+    the app is not fully polished and why is there already notes and pinned
+
+[33mcommit 4d824982bb6da0af7554250d951690816bc93a91[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 06:35:35 2025 +0000
+
+    Try fixing this error: `Build Error: Parsing ecmascript source code fail
+
+[33mcommit 56a01293141216d43b2deb5279c81275c5658712[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 06:35:01 2025 +0000
+
+    add continur as guest option , user can click this and can use the app b
+
+[33mcommit b8cf38952ee21598e46a3ba474b49e3eaff28f0a[m
+Author: random af <geezjustrandomacc@gmail.com>
+Date:   Fri Dec 12 06:31:47 2025 +0000
+
+    I see this error with the app, reported by NextJS, please fix it. The er
+
+[33mcommit f2839bc33331c39937504486e6ac0d8faad3b3f8[m
+Author: Firebase Studio <noreply@firebase.studio>
+Date:   Wed Dec 10 01:12:16 2025 +0000
+
+    Initialized workspace with Firebase Studio
