@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
-import { useAuth } from '@/contexts/auth-context';
 import { useFirestore } from '@/firebase';
 import type { Note } from '@/lib/types';
 
@@ -12,12 +11,11 @@ export interface TagInfo {
 }
 
 export function useTags() {
-  const { user, isGuest } = useAuth();
   const db = useFirestore();
   const [tags, setTags] = useState<TagInfo[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const workspaceId = isGuest ? 'guest_workspace' : user?.uid;
+  const workspaceId = 'guest_workspace';
 
   useEffect(() => {
     if (!workspaceId || !db) {

@@ -1,14 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { doc, onSnapshot, getFirestore } from 'firebase/firestore';
-import { useAuth } from '@/contexts/auth-context';
+import { doc, onSnapshot } from 'firebase/firestore';
 import { useFirestore } from '@/firebase';
 import { Note } from '@/lib/types';
 
 
 export function useNote(noteId: string | null) {
-  const { user, isGuest } = useAuth();
   const db = useFirestore();
   const [note, setNote] = useState<Note | null>(null);
   const [loading, setLoading] = useState(true);
@@ -24,11 +22,6 @@ export function useNote(noteId: string | null) {
       return;
     }
 
-    if (!user && !isGuest) {
-      setLoading(false);
-      return;
-    }
-
     setLoading(true);
 
     const docRef = doc(db, 'notes', noteId);
@@ -38,7 +31,7 @@ export function useNote(noteId: string | null) {
       (docSnap) => {
         if (docSnap.exists()) {
           const data = docSnap.data();
-          const workspaceId = isGuest ? 'guest_workspace' : user?.uid;
+          const workspaceId = 'guest_workspace';
           
           if (data.workspaceId === workspaceId) {
             setNote({
@@ -66,7 +59,7 @@ export function useNote(noteId: string | null) {
     );
 
     return () => unsubscribe();
-  }, [noteId, user, isGuest, db]);
+  }, [noteId, db]);
 
   return { note, loading, error };
 }

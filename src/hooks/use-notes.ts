@@ -1,20 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { collection, query, where, onSnapshot, orderBy, getFirestore, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, query, where, onSnapshot, orderBy, addDoc, serverTimestamp } from 'firebase/firestore';
 import { Note } from '@/lib/types';
-import { useAuth } from '@/contexts/auth-context';
 import { useToast } from './use-toast';
 import { useFirestore } from '@/firebase';
 
 export function useNotes(workspaceId?: string) {
-  const { user, isGuest } = useAuth();
   const db = useFirestore();
   const { toast } = useToast();
   const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const effectiveWorkspaceId = workspaceId || (isGuest ? 'guest_workspace' : user?.uid);
+  const effectiveWorkspaceId = workspaceId || 'guest_workspace';
 
   useEffect(() => {
     if (!effectiveWorkspaceId || !db) {
@@ -58,10 +56,10 @@ export function useNotes(workspaceId?: string) {
       return null;
     }
 
-    if (isGuest && notes.length >= 3) {
+    if (notes.length >= 3) {
       toast({
         title: "Guest limit reached",
-        description: "Guests can only create 3 notes. Please sign up to create more.",
+        description: "You can only create 3 notes. Please sign up to create more.",
         variant: "destructive",
       });
       return null;

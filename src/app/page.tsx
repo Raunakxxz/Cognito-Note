@@ -1,27 +1,26 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/contexts/auth-context';
-import { Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/logo';
+import Link from 'next/link';
 
-export default function Home() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!loading) {
-      if (user) {
-        router.push('/app');
-      } else {
-        router.push('/login');
-      }
-    }
-  }, [user, loading, router]);
-
+export default function WelcomePage() {
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-background">
-      <Loader2 className="h-12 w-12 animate-spin text-primary" />
+    <div className="flex min-h-screen flex-col items-center justify-center bg-bg-app p-4 text-center">
+      <div className="flex flex-col items-center space-y-8">
+        <Logo className="text-4xl" />
+        <div className="max-w-2xl">
+          <h1 className="font-display text-4xl font-bold tracking-tight text-text-primary sm:text-6xl">
+            Your Thoughts, AI-Organized
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-text-secondary">
+            Welcome to CognitoNote. The intelligent note-taking app that helps you summarize, analyze, and organize your ideas with the power of AI.
+          </p>
+        </div>
+        <Button asChild size="lg" className="text-base">
+          <Link href="/app/notes">Get Started</Link>
+        </Button>
+      </div>
     </div>
   );
 }

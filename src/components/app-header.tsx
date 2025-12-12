@@ -3,7 +3,6 @@
 import { Search, Plus, Menu, Command } from 'lucide-react';
 import { Button } from './ui/button';
 import { WorkspaceSwitcher } from './workspace-switcher';
-import { UserNav } from './user-nav';
 import { Logo } from './logo';
 import Link from 'next/link';
 import { Input } from './ui/input';
@@ -40,7 +39,6 @@ export function AppHeader({ onMenuClick }: { onMenuClick: () => void; }) {
             <span className="hidden md:inline">New Note</span>
           </Link>
         </Button>
-        <UserNav />
       </div>
     </header>
   );

@@ -11,13 +11,11 @@ import { AiInsightsPanel } from './ai-insights-panel';
 import { useRouter } from 'next/navigation';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
-import { useAuth } from '@/contexts/auth-context';
 import { useNotes } from '@/hooks/use-notes';
 import { useFirestore } from '@/firebase';
 
 interface NoteEditorProps {
   note?: Note | null;
-  workspaceId?: string | null;
   onNoteCreated: (title: string, content: string) => Promise<void>;
 }
 
@@ -26,13 +24,13 @@ const newNoteTemplate = {
   content: '',
   tags: [],
   aiInsights: {},
+  workspaceId: 'guest_workspace'
 };
 
-export function NoteEditor({ note: initialNote, workspaceId, onNoteCreated }: NoteEditorProps) {
+export function NoteEditor({ note: initialNote, onNoteCreated }: NoteEditorProps) {
   const router = useRouter();
   const db = useFirestore();
   const { toast } = useToast();
-  const { isGuest, user } = useAuth();
   const { notes } = useNotes();
 
   const [note, setNote] = useState(initialNote ? { ...newNoteTemplate, ...initialNote } : newNoteTemplate);
@@ -43,6 +41,7 @@ export function NoteEditor({ note: initialNote, workspaceId, onNoteCreated }: No
   const [isTagInputVisible, setIsTagInputVisible] = useState(false);
 
   const isCreatingNewNote = !initialNote;
+  const workspaceId = 'guest_workspace';
 
   const noteRef = useRef(note);
 
@@ -67,7 +66,7 @@ export function NoteEditor({ note: initialNote, workspaceId, onNoteCreated }: No
 
     if (!db) return;
 
-    if (isGuest && !isCreatingNewNote) {
+    if (!isCreatingNewNote) {
         const noteCount = notes.length;
         if(noteCount > 3) {
             toast({
@@ -84,7 +83,6 @@ export function NoteEditor({ note: initialNote, workspaceId, onNoteCreated }: No
     
     try {
       if (!noteId) {
-        // This case is for creating a new note, which is now handled by onNoteCreated
         await onNoteCreated(currentNote.title, currentNote.content);
         setSaveStatus('Saved');
         return;
@@ -113,7 +111,7 @@ export function NoteEditor({ note: initialNote, workspaceId, onNoteCreated }: No
     } finally {
       setIsSaving(false);
     }
-  }, [workspaceId, toast, isGuest, notes.length, onNoteCreated, isCreatingNewNote, db]);
+  }, [workspaceId, toast, notes.length, onNoteCreated, isCreatingNewNote, db]);
 
   useEffect(() => {
     const hasChanged = JSON.stringify(note) !== JSON.stringify(noteRef.current);
